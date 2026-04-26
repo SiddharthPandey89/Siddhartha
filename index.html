@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank of India</title>
+    <style>
+        
+        body{
+            background: linear-gradient(to right, #e0f2fe,#bae6fd);
+            font-family: Arial;
+            text-align: center;
+
+        }
+        h1{
+            color: black;
+            margin: 500px center;
+            background-color: #38BDF8;
+            
+
+            
+            
+            
+             font-size: 80px;
+        }
+        h2{
+            
+            font-size: 50px;
+        }
+        .machine{
+            background: lightgrey;
+            padding: 40px;
+            margin: 100px auto;
+            width: 700px;
+            border-radius: 20px;
+            box-shadow: 0 0 200px blue;
+           
+            align-items: center;
+        }
+        
+        
+        #display{
+            width: 500px;
+            margin: 10px;
+            margin-top: 2px;
+            height: 20px;
+            
+        }
+        
+        #show{
+            width: 500px;
+            margin: 10px;
+            margin-top: 2px;
+            height: 20px;
+        }
+        #pin{
+            width: 500px;
+            margin: 10px;
+            margin-top: 2px;
+            height: 20px;
+        }
+       button{
+            color: blue;
+            width: 250px;
+            
+            
+            margin: 20px;
+            margin-top: 2px;
+            height: 40px;
+        }
+        #amount {
+            width: 350px;
+            height: 30px;
+        }
+
+    </style>
+</head>
+<body>
+   <b><h1>Welcome to Banking World</h1></b>
+   <div class = 'machine' id = "box"> 
+    <img src="c:/Users/HP/Downloads/etienne-martin-2_K82gx9Uk8-unsplash.jpg"width="600">
+
+   
+   
+   <input type="password" maxlength = "14" id = "display" placeholder="Enter 14 digit account number" >
+   <input type="text" maxlength = "11" id = "show" placeholder="Enter 9 digits IFSC code">
+   <input type="password" maxlength = "4" id = "pin" placeholder="Enter 4 digits pin">
+   <p id="contactText" style="display: none;">
+    Mobile no. 9343937173
+   </p>
+   <button onclick = "siddharth()">Verify</button>
+   <br>
+   
+   <button onclick="support()">contact us</button>
+
+   </div>
+   <div class="machine" id = "bigbox" style="display: none;" >
+    <h2>Welcome back user</h2>
+    <img src="c:/Users/HP/Downloads/etienne-martin-2_K82gx9Uk8-unsplash.jpg"width="600">
+    <p>Balance: <span id = "balance">1000</span></p>
+    <input type="number" id = "amount" placeholder="Enter the amount" >
+    
+   
+   
+    <br>
+    <br>
+    <button onclick ="deposit()">Deposit</button>
+    <button onclick="withdraw()">Withdraw</button>
+
+   </div>
+
+
+   
+   
+   
+   
+<script>
+    let balance = 1000;
+    function siddharth(){
+        let display = document.getElementById("display").value;
+        let show = document.getElementById("show").value;
+        let pin = document.getElementById("pin").value;
+
+        if(display === "12345678901234" && show === "ABCDEF12345" && pin === "0000"){
+            
+            document.getElementById("box").style.display = "none";
+            document.getElementById("bigbox").style.display = 'block';
+
+
+
+            
+            
+
+
+        }
+        else{
+            alert("Wrong Account Number");
+            
+        }
+    }
+    function support(){
+        document.getElementById("contactText").style.display = 'block';
+        
+    }
+    function deposit(){
+        let amt = Number(document.getElementById("amount").value);
+        
+    
+        if (amt > 0){
+        balance += amt;
+        updateBalance();
+        }
+
+
+    }
+    function withdraw(){
+        let amt = Number(document.getElementById("amount").value);
+        if (amt > 0 && amt <= balance){
+        balance -= amt;
+        updateBalance();
+        }
+        else{
+            alert("Insufficient Balance! ");
+        }
+        
+    }
+    function updateBalance(){
+        document.getElementById("balance").innerText = balance;
+                document.getElementById("amount").innerText = " ";
+    }
+</script>
+</body>
+</html>
